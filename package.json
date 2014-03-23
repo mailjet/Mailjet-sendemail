@@ -1,0 +1,14 @@
+{
+  "name": "mailjet-sendemail",
+  "version": "1.0.0",
+  "description": "Sends email using Mailjet API via Node.js",
+  "author": "CharlesCollas <collas.charles@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CharlesCollas/Web-scripts/blob/master/Mailjet/mailjet.js"
+  },
+  "main": "./mailjet",
+  "homepage": "https://github.com/CharlesCollas/Web-scripts/blob/master/Mailjet/",
+  "license": "MIT",
+  "engine": "node"
+}
