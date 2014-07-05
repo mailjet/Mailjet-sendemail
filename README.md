@@ -1,12 +1,12 @@
 # mailjet-sendemail
 This library permits to send emails using Mailjet's API in Node.js. It's MIT licensed.
 
-# Installation
+## Installation
 ```
 npm install mailjet-sendemail
 ```
 
-# Initialization
+## Initialization
 
 Access to the API is done through a Mailjet object. It's instantiated like so:
 
@@ -14,9 +14,9 @@ Access to the API is done through a Mailjet object. It's instantiated like so:
 var mailjet = new Mailjet('apiKey', 'secretKey');
 ```
 
-# Sending Email
+## Sending Email
 
-## sendText
+### sendText
 
 Sends a simple plain-text email.
 
