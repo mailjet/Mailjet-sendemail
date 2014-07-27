@@ -1,5 +1,7 @@
-var http = require('http'),
-    querystring = require('querystring');
+var http = require('http')
+  , querystring = require('querystring');
+
+var mail_parser = require('./mail-parser');
 
 // Initialization class
 var Mailjet = function(apiKey, secretKey) {
@@ -18,12 +20,14 @@ Mailjet.prototype.sendText = function(from, to, subject, text) {
 
   if (typeof(to) == 'string')
       to = [to];
-
+  var recipients = mail-parser.parse_recipient_type(to);
   // Build the HTTP POST body text
   var body = querystring.stringify({
     from: from,
     // Handle many destinations
-    to: to.join(', '),
+    to: recipients['to'].join(', '),
+    cc: recipients['cc'].join(', '),
+    bcc: recipients['bcc'].join(', '),
     subject: subject,
     text: text
   });
