@@ -60,5 +60,4 @@ Mailjet.prototype.sendText = function(from, to, subject, text) {
   req.end(body);
 };
 
-exports.Mailjet = Mailjet;
-module.exports = exports;
+module.exports = Mailjet;
