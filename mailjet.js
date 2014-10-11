@@ -13,7 +13,7 @@ var Mailjet = function(apiKey, secretKey) {
 Mailjet.prototype = {};
 
 // Email sending code
-Mailjet.prototype.sendText = function(from, to, subject, text) {
+Mailjet.prototype.sendContent = function(from, to, subject, content, isHtml) {
 
   if (arguments.length < 4)
     throw new Error('Missing required argument');
@@ -28,9 +28,16 @@ Mailjet.prototype.sendText = function(from, to, subject, text) {
     to: recipients['to'].join(', '),
     cc: recipients['cc'].join(', '),
     bcc: recipients['bcc'].join(', '),
-    subject: subject,
-    text: text
+    subject: subject
   });
+  if (isHtml == 1)
+  {
+      body.html = content;
+  }
+  else
+  {
+      body.text = content;
+  }
 
   var options = {
     hostname: 'api.mailjet.com',

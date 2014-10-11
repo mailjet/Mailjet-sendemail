@@ -17,12 +17,12 @@ var mailjet = new Mailjet['Mailjet']('apiKey', 'secretKey');
 
 ## Sending Email
 
-### sendText
+### sendContent
 
-Sends a simple plain-text email.
+Sends an email.
 
 ```javascript
-mailjet.sendText(from, to, subject, text);
+mailjet.sendContent(from, to, subject, content);
 ```
 
 * from - Sender of the message; this should be a full email address (e.g. ```example@example.com```).
@@ -30,11 +30,24 @@ mailjet.sendText(from, to, subject, text);
 * subject - Message subject
 * text - Message body text
 
-### Example
+### Examples
+
+With plain text :
 
 ```javascript
-mailjet.sendText(sender@example.com,
+mailjet.sendContent(sender@example.com,
          ['recipient1@example.com', 'bcc:recipient2@example.com'],
          'This is a test !',
-         'Well, this is working !')
+         'Well, this is working !',
+         0)
+```
+
+With HTML :
+
+```javascript
+mailjet.sendContent(sender@example.com,
+         ['recipient1@example.com', 'bcc:recipient2@example.com'],
+         'This is a test !',
+         '<b>Well, this is working !</b>',
+         1)
 ```
