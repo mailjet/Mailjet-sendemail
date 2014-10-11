@@ -12,7 +12,7 @@ Access to the API is done through a Mailjet object. It's instantiated like so:
 
 ```javascript
 var Mailjet = require('mailjet-sendemail');
-var mailjet = new Mailjet('apiKey', 'secretKey');
+var mailjet = new Mailjet['Mailjet']('apiKey', 'secretKey');
 ```
 
 ## Sending Email
