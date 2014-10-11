@@ -5,10 +5,10 @@
   "author": "CharlesCollas <collas.charles@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/CharlesCollas/Web-scripts/blob/master/Mailjet/mailjet.js"
+    "url": "https://github.com/CharlesCollas/Mailjet-sendemail/blob/master/mailjet.js"
   },
   "main": "./mailjet",
-  "homepage": "https://github.com/CharlesCollas/Web-scripts/blob/master/Mailjet/",
+  "homepage": "https://github.com/CharlesCollas/Mailjet-sendemail",
   "license": "MIT",
   "engine": "node"
 }
