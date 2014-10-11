@@ -22,22 +22,30 @@ Mailjet.prototype.sendContent = function(from, to, subject, content, isHtml) {
       to = [to];
   var recipients = mail_parser.parse_recipient_type(to);
   // Build the HTTP POST body text
-  var body = querystring.stringify({
-    from: from,
-    // Handle many destinations
-    to: recipients['to'].join(', '),
-    cc: recipients['cc'].join(', '),
-    bcc: recipients['bcc'].join(', '),
-    subject: subject
-  });
-  
+
   if (isHtml == 1)
   {
-      body.html = content;
+      var body = querystring.stringify({
+        from: from,
+        // Handle many destinations
+        to: recipients['to'].join(', '),
+        cc: recipients['cc'].join(', '),
+        bcc: recipients['bcc'].join(', '),
+        subject: subject,
+        html: content
+      });
   }
   else
   {
-      body.text = content;
+      var body = querystring.stringify({
+        from: from,
+        // Handle many destinations
+        to: recipients['to'].join(', '),
+        cc: recipients['cc'].join(', '),
+        bcc: recipients['bcc'].join(', '),
+        subject: subject,
+        text: content
+      });
   }
 
   var options = {
