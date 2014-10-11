@@ -30,6 +30,7 @@ Mailjet.prototype.sendContent = function(from, to, subject, content, isHtml) {
     bcc: recipients['bcc'].join(', '),
     subject: subject
   });
+  
   if (isHtml == 1)
   {
       body.html = content;
