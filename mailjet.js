@@ -13,7 +13,7 @@ var Mailjet = function(apiKey, secretKey) {
 Mailjet.prototype = {};
 
 // Email sending code
-Mailjet.prototype.sendContent = function(from, to, subject, content, isHtml) {
+Mailjet.prototype.sendContent = function(from, to, subject, type, content) {
 
   if (arguments.length < 4)
     throw new Error('Missing required argument');
@@ -23,8 +23,7 @@ Mailjet.prototype.sendContent = function(from, to, subject, content, isHtml) {
   var recipients = mail_parser.parse_recipient_type(to);
   // Build the HTTP POST body text
 
-  if (isHtml == 1)
-  {
+  if (type == 'html') {
       var body = querystring.stringify({
         from: from,
         // Handle many destinations
@@ -35,8 +34,7 @@ Mailjet.prototype.sendContent = function(from, to, subject, content, isHtml) {
         html: content
       });
   }
-  else
-  {
+  else if (type == 'text') {
       var body = querystring.stringify({
         from: from,
         // Handle many destinations
@@ -46,6 +44,9 @@ Mailjet.prototype.sendContent = function(from, to, subject, content, isHtml) {
         subject: subject,
         text: content
       });
+  }
+  else {
+      throw new Error('Wrong email type');
   }
 
   var options = {
