@@ -35,7 +35,7 @@ mailjet.sendContent(from, to, subject, content);
 With plain text :
 
 ```javascript
-mailjet.sendContent(sender@example.com,
+mailjet.sendContent('sender@example.com',
          ['recipient1@example.com', 'bcc:recipient2@example.com'],
          'This is a test !',
          'Well, this is working !',
@@ -45,7 +45,7 @@ mailjet.sendContent(sender@example.com,
 With HTML :
 
 ```javascript
-mailjet.sendContent(sender@example.com,
+mailjet.sendContent('sender@example.com',
          ['recipient1@example.com', 'bcc:recipient2@example.com'],
          'This is a test !',
          '<b>Well, this is working !</b>',
