@@ -39,8 +39,8 @@ With plain text :
 mailjet.sendContent('sender@example.com',
          ['recipient1@example.com', 'bcc:recipient2@example.com'],
          'This is a test !',
-         'Well, this is working !',
-         'text')
+         'text',
+         'Well, this is working !')
 ```
 
 With HTML :
@@ -49,6 +49,6 @@ With HTML :
 mailjet.sendContent('sender@example.com',
          ['recipient1@example.com', 'bcc:recipient2@example.com'],
          'This is a test !',
-         '<b>Well, this is working !</b>',
-         'html')
+         'html',
+         '<b>Well, this is working !</b>')
 ```
