@@ -4,16 +4,18 @@ var http = require('http')
 var mail_parser = require('./mail-parser');
 
 // Initialization class
-var Mailjet = function(apiKey, secretKey) {
+var Mailjet = function(apiKey, secretKey, log) {
   this._apiKey = apiKey;
   this._secretKey = secretKey;
   this._authentificate = new Buffer(apiKey + ':' + secretKey).toString('base64');
+  this._log = log || console.log;
 };
 
 Mailjet.prototype = {};
 
 // Email sending code
 Mailjet.prototype.sendContent = function(from, to, subject, type, content) {
+  var self = this;
 
   if (arguments.length < 4)
     throw new Error('Missing required argument');
@@ -55,7 +57,7 @@ Mailjet.prototype.sendContent = function(from, to, subject, type, content) {
     path: '/v3/send/',
     method: 'POST',
     headers: {
-      'Authorization': 'Basic ' + this._authentificate,
+      'Authorization': 'Basic ' + self._authentificate,
       'Content-Type': 'application/x-www-form-urlencoded',
       'Content-Length': Buffer.byteLength(body)
     }
@@ -63,21 +65,21 @@ Mailjet.prototype.sendContent = function(from, to, subject, type, content) {
 
   // API request
   var req = http.request(options, function(res) {
-    console.log('STATUS: ' + res.statusCode);
-    console.log('HEADERS: ' + JSON.stringify(res.headers));
+    self._log('STATUS: ' + res.statusCode);
+    self._log('HEADERS: ' + JSON.stringify(res.headers));
     res.setEncoding('utf8');
     res.on('data', function (chunk) {
-      console.log('BODY: ' + chunk);
+      self._log('BODY: ' + chunk);
     });
   });
 
   // Checking errors
   req.on('error', function(e) {
-    console.log('problem with request: ' + e.message);
+    self._log('problem with request: ' + e.message);
   });
 
   // Send the body
-  console.log(body);
+  self._log(body);
   req.end(body);
 };
 
