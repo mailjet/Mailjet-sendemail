@@ -1,3 +1,8 @@
+
+# Warning:
+## This wrapper is deprecated
+### use: https://github.com/mailjet/mailjet-apiv3-nodejs instead
+
 # mailjet-sendemail
 This library permits to send emails using Mailjet's API in Node.js. It's MIT licensed.
 
